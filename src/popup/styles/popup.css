@@ -1,0 +1,446 @@
+/* ============================================================ */
+/* 语和 HarmonyKey — Popup 样式                                     */
+/* 设计规范：温和、专业，低视觉干扰                                   */
+/* ============================================================ */
+
+/* ---- Reset & Base ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 380px;
+  min-height: 480px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  font-size: 13px;
+  color: #333;
+  background: #f5f6fa;
+  overflow-x: hidden;
+}
+
+/* ---- Popup Container ---- */
+.harmonykey-popup {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ---- Header ---- */
+.harmonykey-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  padding: 16px 20px;
+}
+
+.harmonykey-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.harmonykey-header__logo {
+  font-size: 24px;
+}
+
+.harmonykey-header__title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.harmonykey-header__nav {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.harmonykey-nav-btn {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.harmonykey-nav-btn.active {
+  background: #fff;
+  color: #667eea;
+}
+
+.harmonykey-nav-btn:hover:not(.active) {
+  color: #fff;
+}
+
+/* ---- Body ---- */
+.harmonykey-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* ---- Cards ---- */
+.harmonykey-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.harmonykey-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.harmonykey-card__desc {
+  color: #888;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* ---- Metrics ---- */
+.harmonykey-metrics {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.harmonykey-metric {
+  flex: 1;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 12px 8px;
+}
+
+.harmonykey-metric__value {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #333;
+}
+
+.harmonykey-metric__label {
+  font-size: 11px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.harmonykey-metric--warn .harmonykey-metric__value {
+  color: #e74c3c;
+}
+
+.harmonykey-metric--good .harmonykey-metric__value {
+  color: #27ae60;
+}
+
+/* ---- Streak ---- */
+.harmonykey-streak {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #fff9e6, #fff3cd);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+
+.harmonykey-streak__icon {
+  font-size: 20px;
+}
+
+.harmonykey-streak__text {
+  font-size: 13px;
+  color: #856404;
+}
+
+/* ---- Distribution ---- */
+.harmonykey-distribution__title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.harmonykey-distribution__bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  background: #eee;
+}
+
+.harmonykey-distribution__segment {
+  transition: width 0.3s ease;
+}
+
+.harmonykey-distribution__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.harmonykey-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #666;
+}
+
+.harmonykey-legend-item__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ---- Suggestions ---- */
+.harmonykey-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.harmonykey-suggestion {
+  background: #f8f9fa;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.harmonykey-suggestion:hover,
+.harmonykey-suggestion--selected {
+  border-color: #667eea;
+  background: #f0f2ff;
+}
+
+.harmonykey-suggestion__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.harmonykey-badge {
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.harmonykey-badge--soften { background: #27ae60; }
+.harmonykey-badge--humor { background: #f39c12; }
+.harmonykey-badge--assertive { background: #3498db; }
+.harmonykey-badge--formal { background: #8e44ad; }
+
+.harmonykey-suggestion__desc {
+  font-size: 11px;
+  color: #999;
+}
+
+.harmonykey-suggestion__text {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* ---- Buttons ---- */
+.harmonykey-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.harmonykey-btn--small {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+
+.harmonykey-btn--apply {
+  background: #667eea;
+  color: #fff;
+  width: 100%;
+}
+
+.harmonykey-btn--apply:hover {
+  background: #5a6fd6;
+}
+
+/* ---- Settings ---- */
+.harmonykey-setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.harmonykey-setting:last-child {
+  border-bottom: none;
+}
+
+.harmonykey-setting__info {
+  flex: 1;
+  padding-right: 12px;
+}
+
+.harmonykey-setting__label {
+  font-weight: 600;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.harmonykey-setting__hint {
+  font-size: 11px;
+  color: #999;
+  line-height: 1.4;
+}
+
+/* Toggle Switch */
+.harmonykey-toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.harmonykey-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.harmonykey-toggle__slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.harmonykey-toggle__slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.harmonykey-toggle input:checked + .harmonykey-toggle__slider {
+  background: #667eea;
+}
+
+.harmonykey-toggle input:checked + .harmonykey-toggle__slider::before {
+  transform: translateX(20px);
+}
+
+/* Select */
+.harmonykey-select {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.harmonykey-select:focus {
+  border-color: #667eea;
+}
+
+/* Slider */
+.harmonykey-slider {
+  width: 100px;
+  accent-color: #667eea;
+}
+
+/* ---- Footer ---- */
+.harmonykey-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.harmonykey-footer__version {
+  font-size: 11px;
+  color: #bbb;
+}
+
+.harmonykey-footer__badge {
+  font-size: 10px;
+  color: #27ae60;
+  background: #eafaf1;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* ---- Loading ---- */
+.harmonykey-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: #999;
+}
+
+.harmonykey-loading__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #eee;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: harmonykey-spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes harmonykey-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Empty State ---- */
+.harmonykey-empty {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+}
+
+.harmonykey-empty__hint {
+  font-size: 12px;
+  margin-top: 6px;
+}
